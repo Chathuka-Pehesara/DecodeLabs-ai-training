@@ -73,7 +73,9 @@ def main() -> None:
     unmatched_log: List[str] = []
     fallback_message = "I don't understand that yet. Try 'help' to see what I can do."
     
-    while True:
+    try:
+
+     while True:
         sys.stdout.write(f"{COLOR_THEME['USER']}You: {COLOR_THEME['RESET']}")
         sys.stdout.flush()
         
@@ -94,9 +96,14 @@ def main() -> None:
             print(f"{COLOR_THEME['BOT']}Decodabot: {goodbye_resp}{COLOR_THEME['RESET']}")
             messages_exchanged += 1
             break
-        
+
         # Process standard responses
         response = get_response(sanitized, RESPONSES, fallback_message, unmatched_log)
         print(f"{COLOR_THEME['BOT']}Decodabot: {response}{COLOR_THEME['RESET']}")
         messages_exchanged += 1
-
+    
+    except KeyboardInterrupt:
+        print(f"\n\n{COLOR_THEME['SYSTEM']}System: Session interrupted via KeyboardInterrupt.{COLOR_THEME['RESET']}")
+    
+    finally:
+        print_goodbye(messages_exchanged, len(unmatched_log))
