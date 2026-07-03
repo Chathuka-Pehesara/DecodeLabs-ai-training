@@ -17,7 +17,7 @@ The track is structured as a progressive skill-building journey:
 | # | Project | Status |
 |---|---------|--------|
 | 1 | Rule-Based AI Chatbot | ✅ Complete |
-| 2 | *Coming soon* | ⬜ Not started |
+| 2 | Data Classification Using AI | ✅ Complete |
 | 3 | *Coming soon* | ⬜ Not started |
 | 4 | *Coming soon* | ⬜ Not started |
 
@@ -32,12 +32,19 @@ concepts as the track progresses.
 ```
 decodelabs-ai-training/
 ├── README.md                          ← you are here
-├── project-1-rule-based-chatbot/
-│   ├── chatbot.py
-│   └── README.md
-├── project-2-.../
-├── project-3-.../
-└── project-4-.../
+├── Project 1/
+│   └── chatbot.py
+├── Project 2/
+│   ├── main.py
+│   ├── data_loader.py
+│   ├── model.py
+│   ├── evaluate.py
+│   ├── requirements.txt
+│   ├── ml_concepts.md
+│   ├── README.md
+│   └── outputs/
+│       ├── elbow_chart.png
+│       └── confusion_matrix.png
 ```
 
 ---
@@ -54,9 +61,13 @@ matching, and clean program architecture.
 
 ---
 
-## 🚧 Project 2
+## ✅ Project 2: Data Classification Using AI
 
-*Details to be added as this project begins.*
+A supervised machine learning classification pipeline built using the Iris dataset (150 samples, 3 classes, 4 features) and a K-Nearest Neighbors (KNN) classifier. Highlights hyperparameter tuning (Elbow Chart method), standardized feature scaling, model validation (train/test splitting), and evaluation reporting (Accuracy, Precision, Recall, F1-Score, and Seaborn Confusion Matrix Heatmap).
+
+**Key skills:** Data Preprocessing, Hyperparameter Tuning, Classification Metrics, Modular ML Pipeline Design
+
+📂 [View Project 2](./Project%202)
 
 ## 🚧 Project 3
 
@@ -72,9 +83,17 @@ matching, and clean program architecture.
 
 Each project folder contains its own instructions. In general:
 
+**Project 1:**
 ```bash
-cd project-1-rule-based-chatbot
+cd "Project 1"
 python chatbot.py
+```
+
+**Project 2:**
+```bash
+cd "Project 2"
+python -m pip install -r requirements.txt
+python main.py
 ```
 
 ---
