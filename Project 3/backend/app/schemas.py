@@ -66,3 +66,4 @@ class AnalyticsOut(BaseModel):
     total_products: int
     popular_categories: Dict[str, int]
     avg_confidence: float
+    similarity_distribution: Dict[str, int]

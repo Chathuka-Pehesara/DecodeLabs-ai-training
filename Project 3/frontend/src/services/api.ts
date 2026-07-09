@@ -33,6 +33,7 @@ export interface Analytics {
   total_products: number;
   popular_categories: Record<string, number>;
   avg_confidence: number;
+  similarity_distribution: Record<string, number>;
 }
 
 // Fetch helper to simplify error handling

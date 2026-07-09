@@ -171,9 +171,24 @@ def get_analytics(db: Session) -> dict:
     # Sort popular categories descending
     sorted_popularity = dict(sorted(popular_categories.items(), key=lambda x: x[1], reverse=True))
     
+    # Calculate similarity score distribution
+    distribution = {"90s": 0, "80s": 0, "70s": 0, "below_70": 0}
+    confidences = db.query(models.RecommendationLog.top_confidence).all()
+    for row in confidences:
+        conf = row[0]
+        if conf >= 90.0:
+            distribution["90s"] += 1
+        elif conf >= 80.0:
+            distribution["80s"] += 1
+        elif conf >= 70.0:
+            distribution["70s"] += 1
+        else:
+            distribution["below_70"] += 1
+            
     return {
         "total_recommendations": total_recs,
         "total_products": total_prods,
         "popular_categories": sorted_popularity,
-        "avg_confidence": round(avg_confidence, 1)
+        "avg_confidence": round(avg_confidence, 1),
+        "similarity_distribution": distribution
     }

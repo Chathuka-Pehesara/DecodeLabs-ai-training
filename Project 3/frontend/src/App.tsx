@@ -895,16 +895,46 @@ function App() {
                         )}
                       </div>
                     </div>
-                    {/* Similarity logic breakdown details */}
-                    <div className="glass-panel rounded-2xl p-6 space-y-4">
-                      <h3 className="text-md font-bold text-white">Matching Engine Theory Check</h3>
-                      <div className="text-xs text-slate-400 leading-relaxed space-y-2">
-                        <p>Our algorithms execute vector metrics dynamically using standard python packages:</p>
-                        <ul className="list-disc pl-5 space-y-1">
-                          <li><strong>Cosine Similarity:</strong> Matches users rating arrays against unit vectors for categories.</li>
-                          <li><strong>Jaccard Similarity:</strong> Evaluates intersection elements over union sets of tags.</li>
-                          <li><strong>Ratings Normalization:</strong> Scales ratings from SQLite tables to range 0.0 to 1.0 to weight popular catalog items.</li>
-                        </ul>
+                    {/* Similarity Score Distribution Card */}
+                    <div className="glass-panel rounded-2xl p-6 space-y-6 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-md font-bold text-white">Confidence Score Distribution</h3>
+                        <p className="text-slate-500 text-xs mt-1">Frequencies of top matches sorted by score ranges.</p>
+                      </div>
+                      
+                      <div className="h-44 flex items-end justify-around gap-4 pt-4 border-b border-brand-darkBorder/40">
+                        {(() => {
+                          const dist = analytics.similarity_distribution || { '90s': 0, '80s': 0, '70s': 0, 'below_70': 0 };
+                          const values = Object.values(dist);
+                          const maxVal = Math.max(...values, 1);
+                          
+                          const ranges = [
+                            { key: '90s', label: '90-100%' },
+                            { key: '80s', label: '80-89%' },
+                            { key: '70s', label: '70-79%' },
+                            { key: 'below_70', label: '< 70%' }
+                          ];
+                          
+                          return ranges.map(({ key, label }) => {
+                            const count = dist[key] || 0;
+                            const barHeight = (count / maxVal) * 100;
+                            
+                            return (
+                              <div key={key} className="flex-1 flex flex-col items-center gap-2 group cursor-pointer">
+                                <div className="text-[10px] text-indigo-400 font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                  {count} queries
+                                </div>
+                                <div className="w-full bg-slate-900/50 border border-brand-darkBorder/30 rounded-t-lg overflow-hidden flex items-end h-28 relative">
+                                  <div 
+                                    className="w-full bg-gradient-to-t from-indigo-600/40 to-indigo-500 border-t border-indigo-400/30 group-hover:brightness-110 transition-all duration-300 rounded-t-md"
+                                    style={{ height: `${Math.max(barHeight, 4)}%` }}
+                                  ></div>
+                                </div>
+                                <span className="text-[10px] text-slate-400 font-medium whitespace-nowrap">{label}</span>
+                              </div>
+                            );
+                          });
+                        })()}
                       </div>
                     </div>
                   </div>
