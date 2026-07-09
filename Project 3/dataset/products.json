@@ -1,0 +1,98 @@
+[
+  {
+    "id": "prod_1",
+    "name": "AutomateFlow CRM",
+    "description": "A cloud-based CRM with dynamic visual mapping tools and automated pipeline integrations.",
+    "category": "SaaS",
+    "tags": ["crm", "automation", "cloud", "reporting"],
+    "rating": 4.8
+  },
+  {
+    "id": "prod_2",
+    "name": "LogShield Guardian",
+    "description": "Real-time application log ingestion and anomaly warning dashboard powered by rules matching.",
+    "category": "DevOps",
+    "tags": ["logging", "monitoring", "devops", "security"],
+    "rating": 4.2
+  },
+  {
+    "id": "prod_3",
+    "name": "CipherVault SQL",
+    "description": "Transparent database encryption wrapper and compliance auditing utility for secure data tables.",
+    "category": "Security",
+    "tags": ["database", "encryption", "security", "cloud"],
+    "rating": 4.5
+  },
+  {
+    "id": "prod_4",
+    "name": "SEO Radar Suite",
+    "description": "Continuous search engine ranking tracker and keyword optimization recommendation platform.",
+    "category": "Marketing",
+    "tags": ["seo", "analytics", "reporting", "marketing"],
+    "rating": 4.6
+  },
+  {
+    "id": "prod_5",
+    "name": "LedgerFast Pro",
+    "description": "Double-entry bookkeeping application featuring automated transaction matching and bank syncing.",
+    "category": "Finance",
+    "tags": ["accounting", "invoicing", "automation", "reporting"],
+    "rating": 4.7
+  },
+  {
+    "id": "prod_6",
+    "name": "TeamSync Space",
+    "description": "Collaboration canvas and project manager with real-time editing and document management.",
+    "category": "SaaS",
+    "tags": ["collaboration", "productivity", "cloud", "automation"],
+    "rating": 4.1
+  },
+  {
+    "id": "prod_7",
+    "name": "BuildPulse CI",
+    "description": "Visual CI/CD pipeline automation framework with test analytics and code coverage insights.",
+    "category": "DevOps",
+    "tags": ["testing", "automation", "devops", "analytics"],
+    "rating": 4.4
+  },
+  {
+    "id": "prod_8",
+    "name": "KeyGuard Auth",
+    "description": "Multi-factor single sign-on authentication service with granular user access permission control.",
+    "category": "Security",
+    "tags": ["security", "auth", "cloud", "encryption"],
+    "rating": 4.9
+  },
+  {
+    "id": "prod_9",
+    "name": "MailPulse Engine",
+    "description": "Transactional email sender with custom segment design, reporting, and split testing analytics.",
+    "category": "Marketing",
+    "tags": ["email", "marketing", "analytics", "reporting"],
+    "rating": 3.9
+  },
+  {
+    "id": "prod_10",
+    "name": "BillSplitter API",
+    "description": "High-throughput invoice creation API supporting global sales tax calculation and payment linking.",
+    "category": "Finance",
+    "tags": ["invoicing", "api", "billing", "automation"],
+    "rating": 4.3
+  },
+  {
+    "id": "prod_11",
+    "name": "DeployWave Kubernetes",
+    "description": "Continuous cloud container orchestration supervisor with automatic scaling limits.",
+    "category": "DevOps",
+    "tags": ["cloud", "devops", "monitoring", "automation"],
+    "rating": 4.0
+  },
+  {
+    "id": "prod_12",
+    "name": "SecAudit Scanner",
+    "description": "Automatic vulnerability checking tool scanning dependencies and security policies.",
+    "category": "Security",
+    "tags": ["security", "testing", "monitoring", "reporting"],
+    "rating": 4.5
+  }
+]
