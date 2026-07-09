@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rec_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - RECOMMEND_DATABASE_URL=sqlite:///./recommendations.db
+      - RECOMMEND_WEIGHT_CATEGORY=0.50
+      - RECOMMEND_WEIGHT_TAGS=0.30
+      - RECOMMEND_WEIGHT_RATING=0.20
+    volumes:
+      - backend_data:/app
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rec_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  backend_data:

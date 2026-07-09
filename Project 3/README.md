@@ -15,7 +15,7 @@ The system allows users to select interests, rate categories, and search product
 ### Backend
 *   **FastAPI** (Python 3.10+) - Fast, high-performance API framework.
 *   **SQLite** - Local development database.
-*   **SQLAlchemy** - Python SQL toolkit and Object Relational Mapper (ORM).
+*   **SQLAlchemy** - Python SQL ORM.
 *   **Uvicorn** - ASGI server implementation.
 
 ### Frontend
@@ -35,10 +35,10 @@ The system allows users to select interests, rate categories, and search product
 
 ```
 Project 3/
-├── dataset/         # Seeding, import, and export datasets
-├── backend/         # FastAPI, SQLite, and recommendation logic
+├── dataset/         # Seeding, import, and export datasets (products.json)
+├── backend/         # FastAPI, SQLite, and recommendation logic test suite
 ├── frontend/        # React 19, TypeScript, and Tailwind dashboard
-├── docs/            # Architecture specifications & formulas
+├── docker-compose.yml # Docker Compose orchestration configurations
 └── README.md        # This documentation
 ```
 
@@ -46,13 +46,71 @@ Project 3/
 
 ## 🗺️ Roadmap & Phases
 
-- [ ] **Phase 1: Project Planning** (Current)
-- [ ] **Phase 2: Backend Setup**
-- [ ] **Phase 3: Frontend Setup**
-- [ ] **Phase 4: Dataset Generation**
-- [ ] **Phase 5: Recommendation Algorithms**
-- [ ] **Phase 6: API Implementation**
-- [ ] **Phase 7: Frontend Integration**
-- [ ] **Phase 8: Analytics Dashboard**
-- [ ] **Phase 9: Testing**
-- [ ] **Phase 10: Docker & Deployment**
+- [x] **Phase 1: Project Planning**
+- [x] **Phase 2: Backend Setup**
+- [x] **Phase 3: Frontend Setup**
+- [x] **Phase 4: Dataset Generation**
+- [x] **Phase 5: Recommendation Algorithms**
+- [x] **Phase 6: API Implementation**
+- [x] **Phase 7: Frontend Integration**
+- [x] **Phase 8: Analytics Dashboard**
+- [x] **Phase 9: Testing**
+- [x] **Phase 10: Docker & Deployment**
+
+---
+
+## 💻 Local Development Setup
+
+### 1. Run Backend Server
+```bash
+cd backend
+python -m venv venv
+# Activate virtual environment
+# Windows:
+.\venv\Scripts\activate
+# Linux/macOS:
+source venv/bin/activate
+
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+API runs at `http://127.0.0.1:8000`. Automatic Swagger docs at `http://127.0.0.1:8000/docs`.
+
+### 2. Run Test Suite
+```bash
+cd backend
+.\venv\Scripts\python -m unittest test_suite.py
+```
+
+### 3. Run Frontend App
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Dashboard runs at `http://localhost:5173`.
+
+---
+
+## 🐳 Containerized Deployment (Docker)
+
+To deploy both backend and frontend services using Docker Compose, navigate to the `Project 3` root folder and execute:
+
+```bash
+# Build and boot the services
+docker-compose up --build -d
+```
+
+*   **SaaS Dashboard**: Served at `http://localhost` (Port 80) via Nginx.
+*   **FastAPI backend**: Served at `http://localhost:8000`.
+
+### Environment Configuration Overrides
+
+You can override weights configurations and sqlite connection pools in `docker-compose.yml` or using system environment variables:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `RECOMMEND_DATABASE_URL` | SQLite file connection string | `sqlite:///./recommendations.db` |
+| `RECOMMEND_WEIGHT_CATEGORY` | Cosine similarity weight component | `0.50` |
+| `RECOMMEND_WEIGHT_TAGS` | Jaccard similarity weight component | `0.30` |
+| `RECOMMEND_WEIGHT_RATING` | normalized quality rating weight | `0.20` |
